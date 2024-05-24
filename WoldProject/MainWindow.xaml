@@ -17,7 +17,7 @@
         <TextBlock Text="HEADER" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Grid Background="#bae3e8" Panel.ZIndex="-2"></Grid>
         <Grid Grid.Row="2" Background="#445c93"></Grid>
-        <Frame Grid.Row="2" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden" Name="MainFrame"></Frame>
+        <Frame Grid.Row="1" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden" Name="MainFrame"></Frame>
         <Button Content="Back" Name="BtnBack" Width="175" Height="30" HorizontalAlignment="Right" Margin="5" Click="BtnBack_Click"/>
     </Grid>
 </Window>

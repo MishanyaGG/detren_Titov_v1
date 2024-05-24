@@ -9,6 +9,6 @@
       Title="UsersPage">
 
     <Grid>
-        <Button Content="Go" Width="175" Height="30" Background="#fac716" Margin="5" Click="Button_Click"/>
+        <Button Content="Go" Click="Button_Click"/>
     </Grid>
 </Page>
