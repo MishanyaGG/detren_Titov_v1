@@ -13,20 +13,11 @@ namespace WoldProject
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class de41_TItov_v2Entities : DbContext
+    public partial class de41_TItov_v2Entities2 : DbContext
     {
-        private static de41_TItov_v2Entities _context;
-        public de41_TItov_v2Entities()
-            : base("name=de41_TItov_v2Entities")
+        public de41_TItov_v2Entities2()
+            : base("name=de41_TItov_v2Entities2")
         {
-        }
-
-        public static de41_TItov_v2Entities GetContext()
-        {
-            if (_context == null)
-                _context = new de41_TItov_v2Entities();
-
-            return _context;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище de41_TItov_v2Model1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_User" Type="int" />
+          <Property Name="menu" Type="nvarchar" MaxLength="1000" />
+          <Property Name="count_Pepople" Type="int" />
+          <Property Name="tableNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="shifts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_User" Type="int" />
+          <Property Name="date_Start" Type="datetime" />
+          <Property Name="date_End" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="patronimyc" Type="nvarchar" MaxLength="50" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwod" Type="nvarchar" MaxLength="50" />
+          <Property Name="role" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Orders_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shifts_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="shifts" Type="Self.shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shifts">
+              <PropertyRef Name="id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище de41_TItov_v2Model1Container">
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shifts" EntityType="Self.shifts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shifts_Users" Association="Self.FK_shifts_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="shifts" EntitySet="shifts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="de41_TItov_v2Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_User" Type="Int32" />
+          <Property Name="menu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="count_Pepople" Type="Int32" />
+          <Property Name="tableNumber" Type="Int32" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="shifts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_User" Type="Int32" />
+          <Property Name="date_Start" Type="DateTime" Precision="3" />
+          <Property Name="date_End" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_shifts_Users" FromRole="shifts" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="patronimyc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
+          <NavigationProperty Name="shifts" Relationship="Self.FK_shifts_Users" FromRole="Users" ToRole="shifts" />
+        </EntityType>
+        <Association Name="FK_Orders_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shifts_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="shifts" Type="Self.shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shifts">
+              <PropertyRef Name="id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="de41_TItov_v2Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="shifts" EntityType="Self.shifts" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shifts_Users" Association="Self.FK_shifts_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="shifts" EntitySet="shifts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище de41_TItov_v2Model1Container" CdmEntityContainer="de41_TItov_v2Entities2">
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="de41_TItov_v2Model1.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="de41_TItov_v2Model1.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_User" ColumnName="id_User" />
+                <ScalarProperty Name="menu" ColumnName="menu" />
+                <ScalarProperty Name="count_Pepople" ColumnName="count_Pepople" />
+                <ScalarProperty Name="tableNumber" ColumnName="tableNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shifts">
+            <EntityTypeMapping TypeName="de41_TItov_v2Model1.shifts">
+              <MappingFragment StoreEntitySet="shifts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_User" ColumnName="id_User" />
+                <ScalarProperty Name="date_Start" ColumnName="date_Start" />
+                <ScalarProperty Name="date_End" ColumnName="date_End" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="de41_TItov_v2Model1.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="patronimyc" ColumnName="patronimyc" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="passwod" ColumnName="passwod" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

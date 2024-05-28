@@ -6,9 +6,34 @@
       xmlns:local="clr-namespace:WoldProject"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UsersPage">
+      Title="UsersPage" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
-        <Button Content="Go" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="337*"/>
+            <RowDefinition Height="73*"/>
+        </Grid.RowDefinitions>
+        
+        <DataGrid Grid.Row="0" x:Name="DGridUsers" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding last_name}" Width="*"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding first_name}" Width="*"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding patronimyc}" Width="*"/>
+                <DataGridTextColumn Header="Логин" Binding="{Binding login}" Width="*"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding passwod}" Width="*"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding role}" Width="*"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding status}" Width="*"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="BtnEdit" Click="BtnEdit_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Добавить" Grid.Row="1" HorizontalAlignment="Left"  Name="BtnAdd" Click="BtnAdd_Click"/>
+        <Button Content="Удалить" Grid.Row="1" HorizontalAlignment="Right" Name="BtnDel" Click="BtnDel_Click"/>
     </Grid>
 </Page>

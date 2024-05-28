@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="92ccb03551ff45febfa8255275acfca3" Name="Diagram1">
+        <EntityTypeShape EntityType="de41_TItov_v2Model1.Menu" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="de41_TItov_v2Model1.Orders" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="de41_TItov_v2Model1.shifts" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="de41_TItov_v2Model1.Users" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="de41_TItov_v2Model1.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="de41_TItov_v2Model1.FK_shifts_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

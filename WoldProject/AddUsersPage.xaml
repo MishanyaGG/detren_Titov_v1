@@ -1,0 +1,54 @@
+﻿<Page x:Class="WoldProject.AddUsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WoldProject"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddUsersPage">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Text="Фамилия" Grid.Row="0"/>
+        <TextBlock Text="Имя" Grid.Row="1"/>
+        <TextBlock Text="Отчество" Grid.Row="2"/>
+        <TextBlock Text="Логин" Grid.Row="3"/>
+        <TextBlock Text="Пароль" Grid.Row="4"/>
+        <TextBlock Text="Роль" Grid.Row="5"/>
+        <TextBlock Text="Статус" Grid.Row="6"/>
+
+        <TextBox Text="{Binding first_name}" Grid.Column="1" Grid.Row="0"/>
+        <TextBox Text="{Binding last_name}" Grid.Column="1" Grid.Row="1"/>
+        <TextBox Text="{Binding patronimyc}" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Text="{Binding login}" Grid.Column="1" Grid.Row="3"/>
+        <TextBox Text="{Binding passwod}" Grid.Column="1" Grid.Row="4"/>
+        <ComboBox Text="{Binding role}" x:Name="ComboRole" Grid.Row="5" Grid.Column="1">
+            <ComboBoxItem Content="Администратор"/>
+            <ComboBoxItem Content="Оффициант"/>
+            <ComboBoxItem Content="Повар"/>
+        </ComboBox>
+        <ComboBox Text="{Binding status}" x:Name="ComboStatus" Grid.Row="6" Grid.Column="1">
+            <ComboBoxItem Content="Работает"/>
+            <ComboBoxItem Content="Уволен"/>
+        </ComboBox>
+
+        <Button Grid.Row="7" Content="Добавить" Click="Button_Click"/>
+
+    </Grid>
+</Page>
